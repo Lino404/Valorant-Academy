@@ -10,15 +10,15 @@ body{
 /* HEADER */
 header {
   width: 100%;
-  background-color: #151021; /* cor consistente com footer */
+  background-color: #151021;
   font-family: 'Orbitron', sans-serif;
 }
 
 .header-container {
   max-width: 1200px;
-  margin: 0 auto; /* centraliza horizontalmente */
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between; /* logo esquerda, links centro, botão direita */
+  justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
   gap: 20px;
@@ -198,7 +198,7 @@ header {
 
 
 footer {
-  background-color: #151021; /* mesma cor do header, elegante e consistente */
+  background-color: #151021;
   color: #e5e7eb;
   width: 100%;
   padding: 40px 20px 20px;
@@ -258,33 +258,9 @@ footer {
   color: #b3b3b3;
 }
 
+footer img {
+    width: 40px;
+    height: 40px;
 
-
-
-
-/* ----------    RESPONSIVO  ---------------- */
-
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .conteudo {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .produtos {
-    flex-direction: column;
-    gap: 20px;
-  }
 }
+
