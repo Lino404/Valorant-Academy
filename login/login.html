@@ -6,14 +6,11 @@
     <title>Login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
 
-    <link rel="stylesheet" href="style.css">
+    <link href="login.css" rel="stylesheet" >
 </head>
 <body>
-    <header>
-        <ul>
-            <a href="index.html">Voltar</a>
-        </ul>
-    </header>
+
+
 
     <main class="login-container">
         <form>
@@ -35,10 +32,19 @@
                 <a href="#">Esqueci minha Senha</a>
             </div>
 
+            <button type="button" onclick="enviarRespostas()">Concluir</button>
+
             <div class="registro">
-                <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a href="../index.html">Cadastre-se</a></p>
             </div>
         </form>
     </main>
+    
+    <script>
+    function enviarRespostas() {
+      window.location.href = "../index.html";
+    }
+  </script>
+
 </body>
 </html>
