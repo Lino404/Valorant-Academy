@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Basico</title>
+    <link href="pb.css" rel="stylesheet"></link>
+</head>
+<body> 
+
+    <div class="plano">
+  <h2>Pacote Básico</h2>
+
+  <div class="modulos">
+    <div class="modulo desbloqueado">
+      <h3>Módulo 1 — Introdução</h3>
+      <p>Aqui você aprende o básico sobre o jogo.</p>
+      <button onclick="window.location.href='modulo1.html'">Acessar</button>
+    </div>
+
+    <div class="modulo bloqueado">
+      <h3>Módulo 2 — Estratégias</h3>
+      <p>Desbloqueie este módulo ao comprar o plano completo.</p>
+      <button disabled>Bloqueado 🔒</button>
+    </div>
+
+    <div class="modulo bloqueado">
+      <h3>Módulo 3 — Táticas Avançadas</h3>
+      <p>Disponível após desbloqueio.</p>
+      <button disabled>Bloqueado 🔒</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function abrirModulo(numero) {
+  alert("Abrindo módulo " + numero + " grátis!");
+  // aqui tu pode redirecionar pra uma página de conteúdo, tipo:
+  // window.location.href = "modulos/modulo1.html"
+}
+</script>
+
+
+    
+</body>
+</html>

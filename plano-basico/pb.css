@@ -1,0 +1,56 @@
+body{
+    background-color: #0e0b14;
+    color: #e5e7eb;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+   
+}
+
+.plano {
+  background: #1b1424;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.modulos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modulo {
+  padding: 15px;
+  border-radius: 8px;
+  background: #2c1f38;
+}
+
+.desbloqueado {
+  border-left: 4px solid #00ffcc;
+}
+
+.bloqueado {
+  border-left: 4px solid #ff4c4c;
+  opacity: 0.6;
+}
+
+button {
+  background: darkmagenta;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
