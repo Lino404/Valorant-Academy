@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Avançado
+    </title>
+    <link href="pa.css" rel="stylesheet"></link>
+</head>
+<body> 
+
+    <div class="plano">
+  <h2>Pacote Avançado</h2>
+
+  <div class="modulos">
+    <div class="modulo desbloqueado">
+      <h3>Módulo 1 — Leitura de Jogo e Controle de Mapa</h3>
+      <p>Aprenda a ler o ritmo da partida, prever movimentações do inimigo e controlar o mapa com base nas decisões da sua equipe.</p>
+      <p>Modulo Gratuito</p>
+      <button onclick="window.location.href='modulo1.html'">Acessar</button>
+    </div>
+
+    <div class="modulo bloqueado">
+      <h3>Módulo 2 - Mecânica e precisão extrema</h3>
+      <p>Chegou a hora de elevar sua mira a outro nível. aqui, o foco é o reflexo, controle de spray e tempo de reação. você vai entender os fundamentos por trás da mira perfeita e treinar como os profissionais</p>
+      <p>Desbloqueie este módulo ao comprar o plano completo.</p>
+      <button disabled>Bloqueado 🔒</button>
+    </div>
+
+    <div class="modulo bloqueado">
+      <h3>Módulo 3 — Coordenação e comunicação avançada</h3>
+      <p>Nenhum jogador carrega sozinho. neste módulo, você aprende a coordenar jogadas complexas, como execuções sincronizadas e retakes planejados, além de dominar a comunicação limpa e objetiva</p>
+      <p>Disponível após desbloqueio.</p>
+      <button disabled>Bloqueado 🔒</button>
+    </div>
+    
+    <div class="modulo bloqueado">
+      <h3>Módulo 4 — Mentalidade competitiva e consistência</h3>
+      <p>O último passo é o mais importante: manter o desempenho sob pressão. aqui você aprende técnicas de controle emocional, mindset competitivo e análise pós-partida.</p>
+      <p>Disponível após desbloqueio.</p>
+      <button disabled>Bloqueado 🔒</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function abrirModulo(numero) {
+  alert("Abrindo módulo " + numero + " grátis!");
+  // aqui tu pode redirecionar pra uma página de conteúdo, tipo:
+  // window.location.href = "modulos/modulo1.html"
+}
+</script>
+
+
+    
+</body>
+</html>
