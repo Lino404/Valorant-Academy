@@ -12,6 +12,8 @@ header {
   width: 100%;
   background-color: #151021;
   font-family: 'Orbitron', sans-serif;
+  border-bottom: 1px solid #2a2238;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .header-container {
@@ -20,47 +22,70 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  gap: 20px;
+  padding: 18px 40px;
+  gap: 30px;
 }
 
 /* LOGO */
-.logo h1 {
-  font-size: 1.5rem;
-  color: #e5e7eb;
-  margin: 0;
+
+.logo img {
+  max-width: 90px;
+  transition: 0.3 ease, transform 0.2 ease;
+  cursor: pointer;
+}
+
+.logo img:hover{
+  transform: scale(1.05);
 }
 
 /* LINKS */
 .nav-links ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 35px;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #e5e7eb;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2 ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #c084fc;
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #c084fc;
+  transform: translateY(-2px);
 }
+
+
 
 /* BOTÃO */
 .header-button button {
   background-color: #a855f7;
   border: none;
   color: #fff;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  transition: 0.3s ease, transform 0.2s ease;
 }
 
 .header-button button:hover {
@@ -68,23 +93,6 @@ header {
   transform: scale(1.05);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .header-button button {
-    width: 100%;
-  }
-}
 
 
 /*    ---------------CONTEUDO----------------         */
@@ -132,12 +140,16 @@ header {
 }
 
 
-
 .cards-container {
   width: 350px;
   height: 600px;
   display: flex;
   justify-content: center;
+}
+
+.card-content{
+  position: relative;
+  background: #000;
 }
 
 .card-button {
@@ -161,6 +173,7 @@ header {
 .card-content img {
   width: 100%;
   display: block;
+  border-radius: 15px;
   filter: blur(0px);
   transition: filter 0.4s ease;
 }
@@ -198,21 +211,26 @@ header {
 
 
 footer {
+  
   background-color: #151021;
   color: #e5e7eb;
   width: 100%;
   padding: 40px 20px 20px;
   font-family: 'Rajdhani', sans-serif;
+  text-align: center;
 }
+
+
+
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
 }
 
 .footer-logo h2 {
@@ -226,9 +244,13 @@ footer {
   gap: 20px;
   padding: 0;
   margin: 0;
+  justify-content: center;
 }
 
 .footer-links a {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #e5e7eb;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -236,6 +258,12 @@ footer {
 
 .footer-links a:hover {
   color: #c084fc;
+}
+
+.footer-social{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .footer-social a {
@@ -249,6 +277,12 @@ footer {
   color: #a855f7;
 }
 
+.footer-social img{
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s ease;
+}
+
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
@@ -259,7 +293,7 @@ footer {
 }
 
 footer img {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
 
 }
