@@ -52,12 +52,14 @@ header {
     font-size: 16px;
     padding: 0 4px 0 15px;
     transition: 0.3s ease;
-    
+    padding: 5px 0px;
+    padding-left: 8px;
 }
 
 .input-box input:focus {
   border-color: #a855f7;
   box-shadow: 0 0 8px #a855f7;
+
 }
 
 /* ÍCONES */
@@ -68,6 +70,7 @@ header {
   transform: translateY(-50%);
   font-size: 20px;
   color: #a855f7;
+
 }
 
 /* LINKS E TEXTO */
