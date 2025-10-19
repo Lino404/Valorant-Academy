@@ -151,6 +151,7 @@ header {
     gap: 40px;
     flex-wrap: wrap;
     padding: 20px;
+    padding-bottom: 80px;
 }
 
 
@@ -278,6 +279,8 @@ footer {
   display: flex;
   justify-content: center;
   gap: 15px;
+  max-width: 5px;
+  transition: transform 0.3s ease;
 }
 
 .footer-social a {
@@ -289,6 +292,7 @@ footer {
 
 .footer-social a:hover {
   color: #a855f7;
+  transform: scale(1.15);
 }
 
 .footer-social img{

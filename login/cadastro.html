@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+
+    <link href="login.css" rel="stylesheet" >
+</head>
+<body>
+
+
+
+    <main class="login-container">
+        <form>
+            <h1>Cadastro</h1>
+            <div class="input-box">
+                <input placeholder="Usuario" type="email" id="novoLogin">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input placeholder="Senha" type="password" id="novaSenha">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <button type="button" onclick="enviarRespostas()">Concluir</button>
+
+            <div class="registro">
+                <p>Não tem uma conta? <a href="../index.html">Cadastre-se</a></p>
+            </div>
+        </form>
+    </main>
+    
+    <script>
+    function enviarRespostas() {
+      var login = document.getElementById("novoLogin").value;
+      var senha = document.getElementById("novaSenha").value;
+
+      if (login == "" || senha == ""){
+        alert("Preencha os campos");
+        return;
+    }
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    let existe = usuarios.find(u => u.login === login);
+    if (existe){
+        alert("Esse usuario ja existe!")
+        return;
+    }
+
+    usuarios.push({ login: login, senha: senha});
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    alert("Cadastro feito com sucesso")
+
+    window.location.href="login.html";
+    }
+
+  </script>
+
+</body>
+</html>

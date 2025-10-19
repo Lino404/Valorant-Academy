@@ -16,11 +16,11 @@
         <form>
             <h1>Login</h1>
             <div class="input-box">
-                <input placeholder="Usuario" type="email">
+                <input placeholder="Usuario" type="email" id="login">
                 <i class="bx bxs-user"></i>
             </div>
             <div class="input-box">
-                <input placeholder="Senha" type="password">
+                <input placeholder="Senha" type="password" id="senha">
                 <i class="bx bxs-lock-alt"></i>
             </div>
 
@@ -35,15 +35,29 @@
             <button type="button" onclick="enviarRespostas()">Concluir</button>
 
             <div class="registro">
-                <p>Não tem uma conta? <a href="../index.html">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
             </div>
         </form>
     </main>
     
     <script>
     function enviarRespostas() {
-      window.location.href = "../index.html";
-    }
+      var login = document.getElementById("login").value;
+      var senha = document.getElementById("senha").value;
+
+      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      let usuario = usuarios.find(u => u.login === login && u.senha === senha);
+
+      if(usuario){
+        alert("sucesso");
+        window.location.href="../index.html"
+      } else{
+        alert("senha e ou email errado")
+      }
+      }
+
+
   </script>
 
 </body>
