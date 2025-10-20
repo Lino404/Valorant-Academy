@@ -194,7 +194,7 @@ header {
 }
 
 .card-button:hover img {
-  filter: blur(5px);
+  filter: blur(0);
 }
 
 .info {
@@ -396,3 +396,4 @@ footer img {
     height: 100px;
 
 }
+
