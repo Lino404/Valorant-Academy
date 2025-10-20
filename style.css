@@ -194,7 +194,7 @@ header {
 }
 
 .card-button:hover img {
-  filter: blur(0);
+  filter: blur(3px);
 }
 
 .info {
