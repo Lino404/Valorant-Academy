@@ -397,3 +397,7 @@ footer img {
 
 }
 
+.footer-imagem-logo:hover{
+  transform: scale(1.05);
+}
+
