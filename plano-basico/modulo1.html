@@ -1,28 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modulo 1</title>
-    <link rel="stylesheet" href="modulo1.css"></link>
-    <link rel="icon" type="image" href="../img/image-removebg-preview.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 — Introdução</title>
+  <link rel="stylesheet" href="modulo1.css">
+  <link rel="icon" type="image" href="../img/image-removebg-preview.png">
 </head>
 <body>
-    <header>
-        <div class="titulo">
-            <h1>“Domine o básico, e o resto vem naturalmente.”</h1>
-        </div>
 
-    </header>
-    <div>
-        <div class="conteudo">
-            <h1>Funções dos Agentes</h1>
-            <div class="card">
-                
-                <h2>No Valorant, cada agente tem um papel específico dentro do time. Entender as funções é essencial pra saber o que se espera de você em cada rodada.<br>Duelistas são os caçadores de abates. Entram primeiro e criam espaço pro time.<br>Controladores manipulam o campo de batalha com smokes e habilidades pra cortar visão e travar avanços.<br>Iniciadores abrem caminho e coletam informação sobre o inimigo.<br>Sentinelas protegem áreas e dão suporte com cura ou armadilhas.<br>Quando cada um cumpre bem o seu papel, o time inteiro flui melhor. Não adianta querer matar mais que todo mundo se tu não faz a função do teu agente direito.</h2>
-            </div>
-            
-        </div>
-    </div>
+  <header class="header">
+    <h1>🌀 Módulo 1 — Fundamentos do Valorant</h1>
+    <p class="sub">Domine o básico, e o resto vem naturalmente.</p>
+  </header>
+
+  <main class="conteudo">
+    <section class="secao">
+      <h2>🎯 Objetivo do Jogo</h2>
+      <p>No Valorant, o objetivo principal depende do modo, mas o mais comum é o modo *Plant/Defuse*, onde um time deve plantar o spike e o outro impedir. Trabalho em equipe, posicionamento e controle de economia são cruciais para a vitória.</p>
+    </section>
+
+    <section class="secao">
+      <h2>👥 Funções dos Agentes</h2>
+      <ul>
+        <li><b>Duelistas</b> — responsáveis por abrir espaço e buscar eliminações.</li>
+        <li><b>Controladores</b> — manipulam o campo com smokes e utilitários.</li>
+        <li><b>Iniciadores</b> — revelam inimigos e criam oportunidades de entrada.</li>
+        <li><b>Sentinelas</b> — protegem áreas e fornecem suporte com cura ou armadilhas.</li>
+      </ul>
+    </section>
+
+    <section class="secao">
+      <h2>🧩 Dicas para Iniciantes</h2>
+      <p>• Jogue com fones de ouvido e preste atenção nos sons.<br>
+         • Treine sua mira no campo de treino todos os dias.<br>
+         • Comunique-se com o time (mesmo que só com pings).<br>
+         • Aprenda o mapa antes de jogar ranqueada.</p>
+    </section>
+
+    <section class="secao">
+      <h2>📺 Vídeo Explicativo</h2>
+      <div class="video-container">
+        <video controls>
+          <source src="../video/modulo1_intro.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos.
+        </video>
+      </div>
+    </section>
+
+    <section class="secao quiz">
+      <h2>🧠 Teste Rápido</h2>
+      <p>Qual é a função dos duelistas?</p>
+      <button onclick="responder(true)">Criar espaço e buscar eliminações</button>
+      <button onclick="responder(false)">Dar suporte e proteger áreas</button>
+      <p id="resultado"></p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="pb.html">⬅ Voltar ao Plano Básico</a>
+  </footer>
+
+  <script src="modulo1.js"></script>
+
 </body>
 </html>
