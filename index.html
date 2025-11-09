@@ -150,8 +150,57 @@
                 </div>
 
             </div>
-
+            <h1>Agentes do Valorant</h1>
         </div>
+
+
+
+
+<div class="carousel-container">
+  <button class="prev">&#10094;</button>
+  <div id="container" class="carousel"></div>
+  <button class="next">&#10095;</button>
+</div>
+
+<script>
+  async function carregarAgentes() {
+    const resposta = await fetch("https://valorant-api.com/v1/agents?language=pt-BR");
+    const dados = await resposta.json();
+    const agentes = dados.data;
+
+    const container = document.getElementById("container");
+    agentes.forEach(agent => {
+      if (agent.isPlayableCharacter) {
+        const div = document.createElement("div");
+        div.classList.add("agent");
+        div.innerHTML = `
+          <h3>${agent.displayName}</h3>
+          <img src="${agent.displayIcon}" alt="${agent.displayName}">
+          <p>${agent.description.slice(0, 100)}...</p>
+        `;
+        container.appendChild(div);
+      }
+    });
+  }
+
+  carregarAgentes();
+
+  // controle do carrossel
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".carousel");
+    document.querySelector(".next").addEventListener("click", () => {
+      container.scrollBy({ left: 300, behavior: "smooth" });
+      container.classList.add("slide-blur");
+      setTimeout(() => container.classList.remove("slide-blur"), 300);
+    });
+    document.querySelector(".prev").addEventListener("click", () => {
+      container.scrollBy({ left: -300, behavior: "smooth" });
+      container.classList.add("slide-blur");
+      setTimeout(() => container.classList.remove("slide-blur"), 300);
+    });
+  });
+</script>
+
         
         <footer>
   <div class="footer-container">

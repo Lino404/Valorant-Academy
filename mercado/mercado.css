@@ -285,6 +285,18 @@ button.limpar:hover {
   transform: scale(1.05);
 }
 
+.carrinho.button {
+  background-color: #c084fc;
+  border: none;
+  padding: 8px 14px;
+  margin-top: 10px;
+  color: #151021;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
 
 /*    ---------------Footer----------------         */
 

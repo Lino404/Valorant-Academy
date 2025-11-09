@@ -5,79 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" href="mercado.css">
-    <link rel="icon" type="image" href="../img/image-removebg-preview.png">
 </head>
 <body>
- <header>
-        <script async src="mercado.js" ></script>
-        <div class="header-container">
-            <div class="logo">
-
+<header>
+    <div class="header-container">
+        <div class="logo">
             <a href="../index.html">
                 <img src="../img/valorant academy logo.png" alt="logo-site">
             </a>
-            
-            </div>
+        </div>
 
-            <nav class="nav-links">
+        <nav class="nav-links">
             <ul>
                 <li><a href="../index.html">Início</a></li>
                 <li><a href="#">Cuidados</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
-            </nav>
+        </nav>
+    </div>
+</header>
 
-            
+<!-- PRODUTOS -->
+<div class="produtos">
+    <div class="produto-card">
+        <div class="produto-conteudo">
+            <img src="../img/camisa neon.png" alt="camisa neon" class="produto-imagem">
         </div>
-        </header>
+        <h1>Camisa Neon</h1>
+        <span class="price">R$ 49,90</span>
+        <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Neon', 49.90)">Adicionar</button>
+    </div> 
 
-        <div class="produtos">
-            <div class="produto-card">
-                <div class="produto-conteudo">
-                    <img src="../img/camisa neon.png" alt="camisa neon" class="produto-imagem">
-                    <div class="mockup-video">
-                        <video autoplay loop muted>
-                            <source src="../video/camisa neon video.mp4">
-                        </video>
-                    </div>
-                </div>
-                <h1>Camisa Neon</h1>
-                <span class="price">R$ 49,90</span>
-                <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Neon', 49.90)">Adicionar</button>
-            </div> 
-
-            <div class="produto-card">
-                <div class="produto-conteudo">
-                    <img src="../img/camisa_omen-removebg-preview.png" alt="camisa omen" class="produto-imagem">
-                    <div class="mockup-video">
-                        <video autoplay loop muted>
-                            <source src="../video/camisa omen video.mp4">
-                        </video>
-                    </div>
-                </div>
-                <h1>Camisa Omen</h1>
-                <span class="price">R$ 49,90</span>
-                <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Omen', 49.90)">Adicionar</button>
-            </div> 
-
-            <div class="produto-card">
-                <div class="produto-conteudo">
-                    <img src="../img/camisa gekko.png" alt="camisa gekko" class="produto-imagem">
-                    <div class="mockup-video">
-                        <video autoplay loop muted>
-                            <source src="../video/camisa gekko.mp4">
-                        </video>
-                    </div>
-                </div>
-                <h1>Camisa Gekko</h1>
-                <span class="price">R$ 49,90</span>
-                <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Gekko', 49.90)">Adicionar</button>
-            </div> 
-
+    <div class="produto-card">
+        <div class="produto-conteudo">
+            <img src="../img/camisa_omen-removebg-preview.png" alt="camisa omen" class="produto-imagem">
         </div>
+        <h1>Camisa Omen</h1>
+        <span class="price">R$ 49,90</span>
+        <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Omen', 49.90)">Adicionar</button>
+    </div> 
 
+    <div class="produto-card">
+        <div class="produto-conteudo">
+            <img src="../img/camisa gekko.png" alt="camisa gekko" class="produto-imagem">
+        </div>
+        <h1>Camisa Gekko</h1>
+        <span class="price">R$ 49,90</span>
+        <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Gekko', 49.90)">Adicionar</button>
+    </div> 
+</div>
 
+<!-- CARRINHO -->
+<div class="carrinho">
+    <h2>Carrinho</h2>
+    <ul id="lista-carrinho"></ul>
+    <p id="total">Total: R$ 0,00</p>
+    <button class="limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <button class="limpar" onclick="finalizarCompra()">Finalizar Compra</button>
 
+</div>
+
+<script>
+// carrinho vazio inicialmente
+let carrinho = [];
+
+// adiciona produto
+function adicionarAoCarrinho(nome, preco) {
+    carrinho.push({ nome, preco });
+    atualizarCarrinho();
+}
+
+// remove item do carrinho
+function removerItem(index) {
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+}
+
+// limpa carrinho
+function limparCarrinho() {
+    carrinho = [];
+    atualizarCarrinho();
+}
+
+// atualiza lista do carrinho e total
+function atualizarCarrinho() {
+    const lista = document.getElementById('lista-carrinho');
+    const totalElem = document.getElementById('total');
+    lista.innerHTML = '';
+
+    let total = 0;
+    carrinho.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        li.onclick = () => removerItem(index);
+        lista.appendChild(li);
+        total += item.preco;
+    });
+
+    totalElem.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+// finalizar compra
+function finalizarCompra() {
+    if(carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    let mensagem = "Você comprou:\n";
+    carrinho.forEach(item => {
+        mensagem += `- ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+    });
+
+    let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+
+    alert(mensagem);
+    carrinho = [];
+    atualizarCarrinho();
+}
+</script>
 
 </body>
 </html>

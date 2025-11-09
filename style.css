@@ -303,6 +303,87 @@ header {
   margin-top: 5px;
   color: #fff;
 }
+
+/*  ------------------API-------------------   */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: 90%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  scrollbar-width: none;
+  transition: filter 0.3s ease;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* efeito de blur quando desliza */
+.slide-blur {
+  filter: blur(3px) brightness(1.1);
+}
+
+.agent {
+  background-color: #151021;
+  color: #fff;
+  border: 1px solid #9b59b6;
+  border-radius: 15px;
+  width: 220px;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agent:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+}
+
+.agent img {
+  width: 160px;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
+}
+
+.agent:hover img {
+  transform: scale(1.05);
+}
+
+button.prev,
+button.next {
+  background-color: #151021; /* mesmo fundo do site e do balão */
+  color: #ffffff; /* texto branco */
+  border: 2px solid #9b59b6; /* borda roxa */
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.5); /* brilho roxo translúcido */
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: #9b59b6; /* roxo claro no hover */
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.8); /* brilho mais forte */
+}
+
+
 /*    ---------------Footer----------------         */
 
 
