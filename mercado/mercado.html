@@ -1,143 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <link rel="stylesheet" href="mercado.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="mercado.css">
 </head>
 <body>
 <header>
-    <div class="header-container">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/valorant academy logo.png" alt="logo-site">
-            </a>
-        </div>
+    <div class="header-container">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/valorant academy logo.png" alt="logo-site">
+            </a>
+        </div>
 
-        <nav class="nav-links">
-            <ul>
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="#">Cuidados</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-    </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="#">Cuidados</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
-<!-- PRODUTOS -->
-<div class="produtos"> 
-  <div class="produto-card"> 
-    <div class="produto-conteudo"> 
-      <img src="../img/camisa neon.png" alt="camisa neon" class="produto-imagem"> 
-      <div class="mockup-video"> 
-        <video autoplay loop muted> 
-          <source src="../video/camisa neon video.mp4"> 
-        </video> 
-      </div> 
-    </div> 
-    <h1>Camisa Neon</h1> 
-    <span class="price">R$ 49,90</span> 
-    <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Neon', 49.90)">Adicionar</button> 
-  </div> 
-  <div class="produto-card"> 
-    <div class="produto-conteudo"> 
-      <img src="../img/camisa_omen-removebg-preview.png" alt="camisa omen" class="produto-imagem"> 
-      <div class="mockup-video"> 
-        <video autoplay loop muted> 
-          <source src="../video/camisa omen video.mp4"> 
-        </video> 
-      </div> 
-    </div> 
-    <h1>Camisa Omen</h1> 
-    <span class="price">R$ 49,90</span> 
-    <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Omen', 49.90)">Adicionar</button> 
-  </div> 
-  <div class="produto-card"> 
-    <div class="produto-conteudo"> 
-      <img src="../img/camisa gekko.png" alt="camisa gekko" class="produto-imagem"> 
-      <div class="mockup-video"> 
-        <video autoplay loop muted> 
-          <source src="../video/camisa gekko.mp4"> 
-        </video> 
-      </div> 
-    </div> 
-    <h1>Camisa Gekko</h1> 
-    <span class="price">R$ 49,90</span> 
-    <button class="add-carrinho" onclick="adicionarAoCarrinho('Camisa Gekko', 49.90)">Adicionar</button> 
-  </div> 
+<div class="produtos" id="lista-produtos-dinamica"> 
+    <h2>Carregando produtos...</h2>
 </div>
 
 
-<!-- CARRINHO -->
 <div class="carrinho">
-    <h2>Carrinho</h2>
-    <ul id="lista-carrinho"></ul>
-    <p id="total">Total: R$ 0,00</p>
-    <button class="limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
-    <button class="limpar" onclick="finalizarCompra()">Finalizar Compra</button>
-
+    <h2>Carrinho</h2>
+    <ul id="lista-carrinho"></ul>
+    <p id="total">Total: R$ 0,00</p>
+    <button class="limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <button class="limpar" onclick="finalizarCompra()">Finalizar Compra</button>
 </div>
 
 <script>
-// carrinho vazio inicialmente
+// URL base do seu Back-end Express
+const API_URL = 'http://localhost:3000/api/products'; 
+
+// --- FUNÇÕES DE CARRINHO (Suas funções originais) ---
 let carrinho = [];
 
-// adiciona produto
 function adicionarAoCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
-    atualizarCarrinho();
+    carrinho.push({ nome, preco });
+    atualizarCarrinho();
 }
 
-// remove item do carrinho
 function removerItem(index) {
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
 }
 
-// limpa carrinho
 function limparCarrinho() {
-    carrinho = [];
-    atualizarCarrinho();
+    carrinho = [];
+    atualizarCarrinho();
 }
 
-// atualiza lista do carrinho e total
 function atualizarCarrinho() {
-    const lista = document.getElementById('lista-carrinho');
-    const totalElem = document.getElementById('total');
-    lista.innerHTML = '';
+    const lista = document.getElementById('lista-carrinho');
+    const totalElem = document.getElementById('total');
+    lista.innerHTML = '';
 
-    let total = 0;
-    carrinho.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
-        li.onclick = () => removerItem(index);
-        lista.appendChild(li);
-        total += item.preco;
-    });
+    let total = 0;
+    carrinho.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        // Adicionar evento para remover item
+        li.onclick = () => removerItem(index); 
+        lista.appendChild(li);
+        total += item.preco;
+    });
 
-    totalElem.textContent = `Total: R$ ${total.toFixed(2)}`;
+    totalElem.textContent = `Total: R$ ${total.toFixed(2)}`;
 }
 
-// finalizar compra
 function finalizarCompra() {
-    if(carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-    }
+    if(carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
 
-    let mensagem = "Você comprou:\n";
-    carrinho.forEach(item => {
-        mensagem += `- ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
-    });
+    let mensagem = "Você comprou:\n";
+    carrinho.forEach(item => {
+        mensagem += `- ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+    });
 
-    let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
-    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+    let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
 
-    alert(mensagem);
-    carrinho = [];
-    atualizarCarrinho();
+    alert(mensagem);
+    carrinho = [];
+    atualizarCarrinho();
 }
+
+
+// --- FUNÇÃO PARA CARREGAR PRODUTOS DO BACK-END ---
+
+function carregarProdutos() {
+    const produtosContainer = document.getElementById('lista-produtos-dinamica');
+    produtosContainer.innerHTML = '<h2>Carregando produtos...</h2>'; // Mensagem de carregamento
+
+    fetch(API_URL)
+        .then(response => {
+            if (!response.ok) {
+                // Se o Back-end não responder 200 OK
+                throw new Error('Erro na rede ou servidor indisponível.');
+            }
+            return response.json();
+        })
+        .then(produtos => {
+            produtosContainer.innerHTML = ''; // Limpa a mensagem de carregamento
+            
+            produtos.forEach(produto => {
+                // Aqui recriamos a EXATA ESTRUTURA HTML que o seu CSS espera.
+                // A única diferença é que as classes CSS (produto-card, produto-imagem, etc.)
+                // estão sendo aplicadas pelo JS.
+                const card = document.createElement('div');
+                card.className = 'produto-card';
+
+                // NOTE: O caminho do vídeo está hardcoded, mas a imagem vem do database.js
+                card.innerHTML = `
+                    <div class="produto-conteudo"> 
+                        <img src="${produto.image}" alt="${produto.name}" class="produto-imagem"> 
+                        <div class="mockup-video"> 
+                            <video autoplay loop muted> 
+                                <source src="${produto.video}">
+                            </video> 
+                        </div> 
+                    </div> 
+                    <h1>${produto.name}</h1> 
+                    <span class="price">R$ ${produto.price.toFixed(2)}</span> 
+                    <button class="add-carrinho" onclick="adicionarAoCarrinho('${produto.name}', ${produto.price})">Adicionar</button> 
+                `;
+                produtosContainer.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Falha ao carregar produtos:', error);
+            // Mensagem de erro para o usuário
+            produtosContainer.innerHTML = '<h2>Não foi possível carregar os produtos. Verifique se o Back-end (Node.js) está rodando na porta 3000.</h2>';
+        });
+}
+
+// Inicia o carregamento dos produtos assim que a página estiver pronta
+document.addEventListener('DOMContentLoaded', carregarProdutos);
+
 </script>
 
 </body>

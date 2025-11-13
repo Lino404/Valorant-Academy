@@ -34,30 +34,44 @@
     
     <script>
     function enviarRespostas() {
-      var login = document.getElementById("novoLogin").value;
-      var senha = document.getElementById("novaSenha").value;
+     var login = document.getElementById("novoLogin").value;
+     var senha = document.getElementById("novaSenha").value;
 
-      if (login == "" || senha == ""){
-        alert("Preencha os campos");
-        return;
-    }
+     if (login === "" || senha === ""){
+         alert("Preencha os campos");
+         return;
+         }
 
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      // 1. Faz a requisição POST para o Back-end
+        fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ login: login, senha: senha }), // Envia os dados
+      })
+      .then(response => {
+        // Verifica se a resposta foi bem-sucedida (status 201)
+        if (response.status === 201) {
+            return response.json();
+        } else {
+            // Se for erro, lê a mensagem de erro do Back-end
+            return response.json().then(data => { throw new Error(data.message) });
+        }
+      })
+      .then(data => {
+        // Sucesso
+        alert(data.message); // Ex: "Cadastro realizado com sucesso!"
+        window.location.href = "login.html";
+      })
+      .catch(error => {
+        // Erro (incluindo "usuário já existe" - status 409)
+        console.error('Erro de Cadastro:', error);
+        alert("Erro ao cadastrar: " + error.message);
+      });
+     }
+    </script>
 
-    let existe = usuarios.find(u => u.login === login);
-    if (existe){
-        alert("Esse usuario ja existe!")
-        return;
-    }
-
-    usuarios.push({ login: login, senha: senha});
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
-    alert("Cadastro feito com sucesso")
-
-    window.location.href="login.html";
-    }
-
-  </script>
 
 </body>
 </html>

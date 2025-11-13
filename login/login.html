@@ -41,25 +41,38 @@
         </form>
     </main>
     
-    <script>
+   <script>
     function enviarRespostas() {
-      var login = document.getElementById("login").value;
-      var senha = document.getElementById("senha").value;
+     var login = document.getElementById("login").value;
+     var senha = document.getElementById("senha").value;
 
-      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-      let usuario = usuarios.find(u => u.login === login && u.senha === senha);
-
-      if(usuario){
-        alert("sucesso");
-        window.location.href="../index.html"
-      } else{
-        alert("senha e ou email errado")
-      }
-      }
-
-
-  </script>
+      fetch('http://localhost:3000/api/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ login: login, senha: senha }),
+      })
+      .then(response => {
+        if (response.ok) { // Status 200
+            return response.json();
+        } else { // Status 401 ou outro erro
+            return response.json().then(data => { throw new Error(data.message) });
+        }
+      })
+      .then(data => {
+        // Login bem-sucedido
+         alert("sucesso!");
+        // Em um projeto real, você salvaria o 'data.token' aqui (Ex: sessionStorage.setItem('token', data.token);)
+         window.location.href = "../index.html"; // Redireciona
+      })
+      .catch(error => {
+        // Credenciais inválidas (401) ou erro de rede
+        console.error('Erro de Login:', error);
+         alert("Erro de Login: " + error.message); // Ex: "senha e ou email errado"
+         });
+ }
+    </script>
 
 </body>
 </html>
