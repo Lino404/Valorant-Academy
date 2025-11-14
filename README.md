@@ -9,47 +9,48 @@ Este projeto é um sistema Full-Stack simples, criado para demonstrar a integra�
 ### 💻 Tecnologias Chave
 
 #### Servidor (Backend - API) ⚙️
-* **Node.js & Express.js:** Base para criar o servidor e as rotas REST.
-* **CORS:** Habilitado para comunicação segura.
-* **Dados em Memória:** Simulação de banco de dados (dados temporários).
-
-#### Cliente (Frontend) 🌐
-* **HTML, CSS, JavaScript:** Páginas de interface e lógica de consumo da API.
-* **`fetch`:** Método usado para comunicação direta com o servidor (`http://localhost:3000`).
+* **Node.js & Express.js:** Base do servidor e roteamento.
+* **CORS:** Habilitado para comunicação segura com o Front-end.
+* **Nodemon:** Usado para desenvolvimento (reinicialização automática).
+* **Dados em Memória:** Simulação de persistência (dados voláteis).
 
 ---
 
-### 🎯 Requisitos e Funcionalidades
+### 🛠️ Como Iniciar a Demonstração (Passos Essenciais)
 
-| Funcionalidade | Implementação |
-| :--- | :--- |
-| **Listagem de Produtos** | O `produtos.html` carrega dinamicamente o catálogo via `GET /api/products`. |
-| **Cadastro de Usuário** | Rota `POST /api/users/register` para salvar (temporariamente) novos logins. |
-| **Login de Usuário** | Rota `POST /api/users/login` para autenticação. |
-| **Rotas CRUD** | Estrutura de rotas básicas implementadas no Backend. |
-| **Integração Completa** | JavaScript consumindo e exibindo dados da API. |
+Para que o servidor funcione, você precisa instalar as dependências necessárias.
 
----
+#### Passo 1: Instalação das Dependências
 
-### 🛠️ Como Iniciar a Demonstração
-
-Para começar, você precisa ligar o servidor da API.
-
-#### Passo 1: Iniciar o Backend (API)
 1.  Acesse a pasta **`backend`** no terminal.
-2.  Execute o comando:
+2.  Instale as dependências principais (Express e CORS):
+    ```bash
+    npm install express cors
+    ```
+3.  Instale o Nodemon como ferramenta de desenvolvimento (necessário para o comando `npm run dev`):
+    ```bash
+    npm install nodemon --save-dev
+    ```
+4.  Certifique-se de que o script `"dev": "nodemon server.js"` está no seu `package.json`.
+
+---
+
+#### Passo 2: Iniciar o Backend (API)
+
+1.  Execute o comando para ligar o servidor em modo de desenvolvimento:
     ```bash
     npm run dev
     ```
-    *(A API estará pronta em **http://localhost:3000**)*
+    ✅ O servidor estará pronto em **`http://localhost:3000`**.
 
-#### Passo 2: Demonstração (Frontend)
+#### Passo 3: Demonstração (Frontend)
+
 1.  Abra as páginas HTML no seu navegador.
-2.  **Comece em `cadastro.html`** para criar um novo usuário e, em seguida, teste o login.
+2.  **Comece em `cadastro.html`** para criar um novo usuário.
 3.  Acesse **`produtos.html`** para ver o catálogo sendo carregado dinamicamente do servidor Node.js.
 
 ---
 
 ### ⚠️ Aviso (Persistência de Dados)
 
-Os dados de usuários e quaisquer alterações são armazenados **apenas na memória RAM**. Eles serão **perdidos** toda vez que o servidor for reiniciado.
+Os dados são armazenados **apenas na memória RAM**. Eles serão **perdidos** toda vez que o servidor for reiniciado.
